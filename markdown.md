@@ -16,6 +16,15 @@ JavaScript 是一种脚本，一门编程语言，它可以在网页上实现复
 
 [试一试 ](jQuery learn\demo.html)
 
+由于HTML文档被浏览器解析后就是一棵DOM树，要改变HTML的结构，就需要通过JavaScript来操作DOM。
+
+始终记住DOM是一个树形结构。操作一个DOM节点实际上就是这么几个操作：
+
+- 更新：更新该DOM节点的内容，相当于更新了该DOM节点表示的HTML的内容；
+- 遍历：遍历该DOM节点下的子节点，以便进行进一步操作；
+- 添加：在该DOM节点下新增一个子节点，相当于动态增加了一个HTML节点；
+- 删除：将该节点从HTML中删除，相当于删掉了该DOM节点的内容以及它包含的所有子节点。
+
 ## HTML
 
 **超文本标记语言**（英语：**H**yper**T**ext **M**arkup **L**anguage，简称：**HTML**）是一种用于创建[网页](https://zh.wikipedia.org/wiki/网页)的标准[标记语言](https://zh.wikipedia.org/wiki/标记语言)。[浏览器](https://zh.wikipedia.org/wiki/网页浏览器)可以读取HTML文件，并将其渲染成可视化网页。HTML描述了一个网站的结构语义随着线索的呈现，使之成为一种标记语言而非[编程语言](https://zh.wikipedia.org/wiki/编程语言)。
@@ -41,6 +50,46 @@ JavaScript 是一种脚本，一门编程语言，它可以在网页上实现复
   </body>
 </html>
 ```
+
+
+
+### 块级元素
+
+HTML（超文本标记语言）中元素大多数都是“块级”元素或[行内元素 (en-US)](https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements)。块级元素占据其父元素（容器）的整个空间，因此创建了一个“块”。
+
+| 元素                                                         | 说明               |
+| :----------------------------------------------------------- | :----------------- |
+| [`<div>`](https://www.runoob.com/cssref/pr-margin.html)      | 文档分区           |
+| [`<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form) | 表单               |
+| [`<table>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/table) | 表格               |
+
+### 行内元素
+
+HTML (超文本标记语言) 元素大多数都是行内元素或[块级元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Block-level_elements)。一个行内元素只占据它对应标签的边框所包含的空间。
+
+
+
+| 元素     | 说明               |
+| :------- | :----------------- |
+| a        | 文档分区           |
+| span     | 表单               |
+| button   | 按钮               |
+| input    | 表单输入           |
+| label    | 标签               |
+| select   | 选项菜单           |
+| textarea | 多行纯文本编辑控件 |
+
+#### [行内元素与块级元素对比](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements#行内元素与块级元素对比)
+
+- 内容
+
+  一般情况下，行内元素只能包含数据和其他行内元素。
+
+  而块级元素可以包含行内元素和其他块级元素。这种结构上的包含继承区别可以使块级元素创建比行内元素更”大型“的结构。
+
+- 格式
+
+  默认情况下，行内元素不会以新行开始，而块级元素会新起一行。
 
 ## CSS
 
@@ -231,7 +280,7 @@ Stylesheets **cascade（样式表层叠）** — 简单的说，css规则的顺�
 
 下面的例子中，我们有两个关于 `h1` 的规则。`h1` 最后显示蓝色 — 这些规则有相同的优先级，所以顺序在最后的生效。
 
-```html
+```css
 h1 { 
     color: red; 
 }
@@ -352,6 +401,21 @@ div {
 
 #### 弹性盒子模型（Flexible Box）
 
+文档中采用了 flexbox 的区域就叫做 flex 容器。为了创建 flex 容器， 我们把一个容器的 [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display) 属性值改为 `flex` 或者 `inline-flex`。 完成这一步之后，容器中的直系子元素就会变为 **flex 元素**。所有CSS属性都会有一个初始值，所以 flex 容器中的所有 flex 元素都会有下列行为：
+
+- 元素排列为一行 (`flex-direction` 属性的初始值是 `row`)。
+- 元素从主轴的起始线开始。
+- 元素不会在主维度方向拉伸，但是可以缩小。
+- 元素被拉伸来填充交叉轴大小。
+- [`flex-basis`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis) 属性为 `auto`。
+- [`flex-wrap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-wrap) 属性为 `nowrap`。
+
+```css
+div {
+  display: flex;
+}
+```
+
 | 属性                                                         | 说明                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [flex](https://www.runoob.com/cssref/css3-pr-flex.html)      | 复合属性。设置或检索弹性盒模型对象的子元素如何分配空间。     |
@@ -360,30 +424,30 @@ div {
 | [flex-basis](https://www.runoob.com/cssref/css3-pr-flex-basis.html) | 设置或检索弹性盒伸缩基准值。                                 |
 | [flex-flow](https://www.runoob.com/cssref/css3-pr-flex-flow.html) | 复合属性。设置或检索弹性盒模型对象的子元素排列方式。         |
 | [flex-direction](https://www.runoob.com/cssref/css3-pr-flex-direction.html) | 该属性通过定义flex容器的主轴方向来决定felx子项在flex容器中的位置。 |
-| [flex-wrap](https://www.runoob.com/cssref/css3-pr-flex-wrap.html) | 该属性控制flex容器是单行或者多行，同时横轴的方向决定了新行堆叠的方向。 |
-| [align-content](https://www.runoob.com/cssref/css3-pr-align-content.html) | 在弹性容器内的各项没有占用交叉轴上所有可用的空间时对齐容器内的各项（垂直）。 |
-| [align-items](https://www.runoob.com/cssref/css3-pr-align-items.html) | 定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。 |
+| **[flex-wrap](https://www.runoob.com/cssref/css3-pr-flex-wrap.html)** | **决定容器内项目是否可换行**                                 |
+| [align-content](https://www.runoob.com/cssref/css3-pr-align-content.html) | 定义了多根轴线的对齐方式，如果项目只有一根轴线，那么该属性将不起作用 |
+| **[align-items](https://www.runoob.com/cssref/css3-pr-align-items.html)** | 定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。 |
 | [align-self](https://www.runoob.com/cssref/css3-pr-align-self.html) | 定义flex子项单独在侧轴（纵轴）方向上的对齐方式。             |
-| [justify-content](https://www.runoob.com/cssref/css3-pr-justify-content.html) | 设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。       |
+| **[justify-content](https://www.runoob.com/cssref/css3-pr-justify-content.html)** | 设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。       |
 | [order](https://www.runoob.com/cssref/css3-pr-order.html)    | 设置或检索弹性盒模型对象的子元素出现的順序。                 |
 
 #### 定位（Positioning）
 
-| 属性                                                         | 说明                                                 |
-| :----------------------------------------------------------- | :--------------------------------------------------- |
-| [bottom](https://www.runoob.com/cssref/pr-pos-bottom.html)   | 设置定位元素下外边距边界与其包含块下边界之间的偏移   |
-| [clear](https://www.runoob.com/cssref/pr-class-clear.html)   | 规定元素的哪一侧不允许其他浮动元素                   |
-| [clip](https://www.runoob.com/cssref/pr-pos-clip.html)       | 剪裁绝对定位元素                                     |
-| [cursor](https://www.runoob.com/cssref/pr-class-cursor.html) | 规定要显示的光标的类型（形状）                       |
-| [display](https://www.runoob.com/cssref/pr-class-display.html) | 规定元素应该生成的框的类型                           |
-| [float](https://www.runoob.com/cssref/pr-class-float.html)   | 规定框是否应该浮动                                   |
-| [left](https://www.runoob.com/cssref/pr-pos-left.html)       | 设置定位元素左外边距边界与其包含块左边界之间的偏移   |
-| [overflow](https://www.runoob.com/cssref/pr-pos-overflow.html) | 规定当内容溢出元素框时发生的事情                     |
-| [position](https://www.runoob.com/cssref/pr-class-position.html) | 规定元素的定位类型                                   |
-| [right](https://www.runoob.com/cssref/pr-pos-right.html)     | 设置定位元素右外边距边界与其包含块右边界之间的偏移   |
-| [top](https://www.runoob.com/cssref/pr-pos-top.html)         | 设置定位元素的上外边距边界与其包含块上边界之间的偏移 |
-| [visibility](https://www.runoob.com/cssref/pr-class-visibility.html) | 规定元素是否可见                                     |
-| [z-index](https://www.runoob.com/cssref/pr-pos-z-index.html) | 设置元素的堆叠顺序                                   |
+| 属性                                                         | 说明                                                         |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [bottom](https://www.runoob.com/cssref/pr-pos-bottom.html)   | 设置定位元素下外边距边界与其包含块下边界之间的偏移           |
+| [clear](https://www.runoob.com/cssref/pr-class-clear.html)   | 规定元素的哪一侧不允许其他浮动元素                           |
+| [clip](https://www.runoob.com/cssref/pr-pos-clip.html)       | 剪裁绝对定位元素                                             |
+| [cursor](https://www.runoob.com/cssref/pr-class-cursor.html) | 规定要显示的光标的类型（形状）                               |
+| **[display](https://www.runoob.com/cssref/pr-class-display.html)** | 规定元素应该生成的框的类型。**最常用的是display:none; 不占据页面空间** |
+| [float](https://www.runoob.com/cssref/pr-class-float.html)   | 规定框是否应该浮动                                           |
+| [left](https://www.runoob.com/cssref/pr-pos-left.html)       | 设置定位元素左外边距边界与其包含块左边界之间的偏移           |
+| [overflow](https://www.runoob.com/cssref/pr-pos-overflow.html) | 规定当内容溢出元素框时发生的事情                             |
+| **[position](https://www.runoob.com/css/css-positioning.html)** | 规定元素的定位类型                                           |
+| [right](https://www.runoob.com/cssref/pr-pos-right.html)     | 设置定位元素右外边距边界与其包含块右边界之间的偏移           |
+| [top](https://www.runoob.com/cssref/pr-pos-top.html)         | 设置定位元素的上外边距边界与其包含块上边界之间的偏移         |
+| **[visibility](https://www.runoob.com/cssref/pr-class-visibility.html)** | 规定元素是否可见;**和display:none;相比，他占据了空间**       |
+| [z-index](https://www.runoob.com/cssref/pr-pos-z-index.html) | 设置元素的堆叠顺序                                           |
 
 更多属性，可以参照以下文档。
 
@@ -402,24 +466,14 @@ $(selector).action()
 选择符（selector）“查询”和“查找” HTML 元素
 jQuery 的 action() 执行对元素的操作
 
+[试一试 ](jQuery learn\jquery-demo.html)
+
 ### 选择器(selector)
 
 #### 元素选择器
 
-jQuery 使用 CSS 选择器来选取 HTML 元素。
-
 ```javascript
 $("p") 选取 <p> 元素。
-
-$("p.intro") 选取所有 class="intro" 的 <p> 元素。
-
-$("p#demo") 选取所有 id="demo" 的 <p> 元素。
-```
-
-#### ID选择器
-
-```javascript
-$("#demo") 选取所有 id="demo" 的元素。
 ```
 
 #### 类选择器
@@ -428,20 +482,26 @@ $("#demo") 选取所有 id="demo" 的元素。
 $(".demo") 选取所有 class="demo" 的元素。
 ```
 
+#### ID选择器
+
+```javascript
+$("#demo") 选取所有 id="demo" 的元素。
+```
+
 #### 属性选择器
 
 ```javascript
-$("[href]") 选取所有带有 href 属性的元素。
+$("[href]") // 选取所有带有 href 属性的元素。
 
-$("[href='#']") 选取所有带有 href 值等于 "#" 的元素。
+$("[href='#']") // 选取所有带有 href 值等于 "#" 的元素。
 
-$("[href!='#']") 选取所有带有 href 值不等于 "#" 的元素。
+$("[href!='#']") // 选取所有带有 href 值不等于 "#" 的元素。
 
-$("[href$='.jpg']") 选取所有 href 值以 ".jpg" 结尾的元素。
+$("[href$='.jpg']") // 选取所有 href 值以 ".jpg" 结尾的元素。
 
-$("[href^='aa']") 选取所有 href 值以 "aa" 开头的元素。
+$("[href^='aa']") // 选取所有 href 值以 "aa" 开头的元素。
 
-$("[href*='aa']") 选取所有 href 值包含 "aa" 的元素。
+$("a[href*='aa']") // 选取所有 href 值包含 "aa" 的元素。
 ```
 
 #### CSS 选择器
@@ -483,8 +543,8 @@ $(document).ready(function(){
   - fn 事件处理程序。fn的内部作用域中this指向当前的DOM对象（注意不是jQuery的包装对象)
 
 ```javascript
-$('#btn').click(function(){
-    alert(1);
+$('#btn').click(['参数']， function(obj){
+    alert(obj.data); // 参数
 });
 
 // 触发
@@ -538,7 +598,7 @@ $("button").bind({
 参数:
 
 - events:一个或多个用空格分隔的事件类型和可选的命名空间，如"click"或"keydown.myPlugin" 。
-- selector:一个选择器字符串用于过滤器的触发事件的选择器元素的后代。如果选择的< null或省略，当它到达选定的元素，事件总是触发。
+- selector:一个选择器字符串用于过滤器的触发事件的选择器元素的后代。如果null或省略，当它到达选定的元素，事件总是触发。
 - data:当一个事件被触发时要传递event.data给事件处理函数。
 - fn:该事件被触发时执行的函数。 false 值也可以做一个函数的简写，返回false。
 
@@ -548,7 +608,7 @@ $("p").on("click", function(){
   alert( $(this).text() );
 });
 
-// 事件委托
+// 事件委托 点DIV下面的P元素时，才会出发click
 $('div').on('click', 'p', function(e){
   console.log(this.innerHTML);
 })
@@ -559,7 +619,7 @@ $('div').on('click', 'p', function(e){
 
 语法：
 
-```
+```javascript
 $(selector).hide(speed,callback);
 
 $(selector).show(speed,callback);
@@ -569,18 +629,18 @@ $(selector).show(speed,callback);
 
 可选的 callback 参数是隐藏或显示完成后所执行的函数名称。
 
-```
-// 使用 toggle() 方法来切换 hide() 和 show() 方法。
+```javascript
+// 使用 toggle() 方法来切换 hide() 和 show() 方法。  类似于display:none
 $("button").click(function(){
   $("p").toggle();
 });
 ```
 
-#### 动画(animate)
+### 动画(animate)
 
 jQuery animate() 方法用于创建自定义动画。
 
-### 语法：
+语法
 
 ```
 $(selector).animate({params},speed,callback);
@@ -594,7 +654,7 @@ $(selector).animate({params},speed,callback);
 
 下面的例子演示 animate() 方法的简单应用；它把 <div> 元素移动到左边，直到 left 属性等于 250 像素为止：
 
-### 实例
+
 
 ```javascript
 $("button").click(function(){
@@ -610,11 +670,7 @@ jQuery 提供一系列与 DOM 相关的方法，这使访问和操作元素和�
 
 **提示：**DOM = Document Object Model（文档对象模型）
 
-DOM 定义访问 HTML 和 XML 文档的标准：
-
-“W3C 文档对象模型独立于平台和语言的界面，允许程序和脚本动态访问和更新文档的内容、结构以及样式。”
-
-## 获得/设置 内容 - text()、html() 以及 val()
+#### 获得/设置 内容 
 
 三个简单实用的用于 DOM 操作的 jQuery 方法：
 
@@ -623,8 +679,6 @@ DOM 定义访问 HTML 和 XML 文档的标准：
 - val() - 设置或返回表单字段的值
 
 下面的例子演示如何通过 jQuery text() 和 html() 方法来获得内容：
-
-### 实例
 
 ```javascript
 $("#btn1").click(function(){
@@ -635,11 +689,9 @@ $("#btn2").click(function(){
 });
 ```
 
-## attr()
+#### 获取/修改属性attr()
 
 下面的例子演示如何获得链接中 href 属性的值：
-
-### 实例
 
 ```
 $("button").click(function(){
@@ -647,69 +699,54 @@ $("button").click(function(){
 });
 ```
 
-# 添加元素
-
-## jQuery append() 方法
+#### [append() ](https://www.runoob.com/jquery/html-append.html)
 
 jQuery append() 方法在被选元素的结尾插入内容。
 
-### 实例
-
 ```javascript
-$("p").append("Some appended text.");
+<p>段落文本1<span></span><!--插入到p元素内部的末尾位置--></p>
+<p>段落文本2<span></span><!--插入到p元素内部的末尾位置--></p>
+
+
+<script>
+	$("p").append( '<!--插入到p元素内部的末尾位置-->' ); 
+</script>
 ```
 
-## jQuery prepend() 方法
+#### [prepend() ](https://www.runoob.com/jquery/html-prepend.html)
 
 jQuery prepend() 方法在被选元素的开头插入内容。
-
-### 实例
 
 ```javascript
 $("p").prepend("Some prepended text.");
 ```
 
-## jQuery after() 和 before() 方法
+#### [after()](https://www.runoob.com/jquery/html-after.html) 和 [before()](https://www.runoob.com/jquery/html-before.html)
 
 jQuery after() 方法在被选元素之后插入内容。
 
 jQuery before() 方法在被选元素之前插入内容。
 
-### 实例
-
 ```javascript
-$("img").after("Some text after");
+<p>段落文本1<span></span></p><!--插入到p元素之后的位置-->
+<p>段落文本2<span></span></p><!--插入到p元素之后的位置-->
+
+<script>
+	$("p").after( '<!--插入到p元素之后的位置-->' ); 
+</script>
 
 $("img").before("Some text before");
 ```
 
-# 删除元素
-
-## jQuery remove() 方法
+#### remove() 
 
 jQuery remove() 方法删除被选元素及其子元素。
-
-### 实例
 
 ```javascript
 $("#div1").remove();
 ```
 
-## 过滤被删除的元素
-
-jQuery remove() 方法也可接受一个参数，允许您对被删元素进行过滤。
-
-该参数可以是任何 jQuery 选择器的语法。
-
-下面的例子删除 class="italic" 的所有 <p> 元素：
-
-### 实例
-
-```javascript
-$("p").remove(".italic");
-```
-
-## 设置 CSS 属性
+#### 设置 CSS 属性
 
 如需设置指定的 CSS 属性，请使用如下语法：
 
@@ -719,23 +756,19 @@ css("propertyname","value");
 
 下面的例子将为所有匹配元素设置 background-color 值：
 
-### 实例
-
 ```javascript
 $("p").css("background-color","yellow");
 ```
 
 
 
-## 遍历(Traversing )
+### 遍历(Traversing)
 
-## jQuery first() 方法
+#### first()
 
 first() 方法返回被选元素的首个元素。
 
 下面的例子选取首个 <div> 元素内部的第一个 <p> 元素：
-
-### 实例
 
 ```javascript
 $(document).ready(function(){
@@ -743,13 +776,11 @@ $(document).ready(function(){
 });
 ```
 
-## jQuery last() 方法
+#### last()
 
 last() 方法返回被选元素的最后一个元素。
 
 下面的例子选择最后一个 <div> 元素中的最后一个 <p> 元素：
-
-### 实例
 
 ```javascript
 $(document).ready(function(){
@@ -757,13 +788,11 @@ $(document).ready(function(){
 });
 ```
 
-## jQuery eq() 方法
+#### eq()
 
 eq() 方法返回被选元素中带有指定索引号的元素。
 
 索引号从 0 开始，因此首个元素的索引号是 0 而不是 1。下面的例子选取第二个 <p> 元素（索引号 1）：
-
-### 实例
 
 ```javascript
 $(document).ready(function(){
@@ -771,13 +800,11 @@ $(document).ready(function(){
 });
 ```
 
-## jQuery filter() 方法
+#### filter()
 
 filter() 方法允许您规定一个标准。不匹配这个标准的元素会被从集合中删除，匹配的元素会被返回。
 
 下面的例子返回带有类名 "intro" 的所有 <p> 元素：
-
-### 实例
 
 ```javascript
 $(document).ready(function(){
@@ -785,7 +812,7 @@ $(document).ready(function(){
 });
 ```
 
-## jQuery not() 方法
+#### not()
 
 not() 方法返回不匹配标准的所有元素。
 
@@ -793,61 +820,59 @@ not() 方法返回不匹配标准的所有元素。
 
 下面的例子返回不带有类名 "intro" 的所有 <p> 元素：
 
-实例
-
 ```javascript
 $(document).ready(function(){
   $("p").not(".intro");
 });
 ```
 
-each() 方法
-
-## 定义和用法
+#### [each() ](https://www.runoob.com/jquery/traversing-each.html)
 
 each() 方法规定为每个匹配元素规定运行的函数。
 
 **提示：**返回 false 可用于及早停止循环。
 
-### 语法
-
 ```javascript
 $(selector).each(function(index,element))
 ```
 
-### AJAX （Asynchronous JavaScript and XML）
+### AJAX 
 
-AJAX是与服务器交换数据并更新部分网页的技术，而无需重新加载整个页面。
+AJAX（Asynchronous JavaScript and XML）是与服务器交换数据并更新部分网页的技术，而无需重新加载整个页面。
 
 AJAX = 异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
 
 简短地说，在不重载整个网页的情况下，AJAX 通过后台加载数据，并在网页上进行显示。
 
-### 创建 XMLHttpRequest 对象
+![AJAX](https://www.runoob.com/wp-content/uploads/2013/09/ajax-yl.png)
 
 
 
+```javascript
+var aj = $.ajax( {    
+    url:'leyangjuntest.php',/
+    data:{    
+             selRollBack : selRollBack,    
+             selOperatorsCode : selOperatorsCode,    
+             PROVINCECODE : PROVINCECODE,    
+             pass2 : pass2    
+    },    
+    type:'post',    
+    cache:false,    
+    dataType:'json',    
+    success:function(data) {    
+        if(data.msg =="true" ){    
+            // view("修改成功！");    
+            alert("修改成功！");    
+            window.location.reload();    
+        }else{    
+            view(data.msg);    
+        }    
+     },    
+     error : function() {    
+          // view("异常！");    
+          alert("异常！");    
+     }    
+});  
+```
 
-
-| Method                                                       | Description                                                  |
-| :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [$.ajax()](https://www.w3schools.com/jquery/ajax_ajax.asp)   | Performs an async AJAX request                               |
-| $.ajaxPrefilter()                                            | Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax() |
-| [$.ajaxSetup()](https://www.w3schools.com/jquery/ajax_ajaxsetup.asp) | Sets the default values for future AJAX requests             |
-| $.ajaxTransport()                                            | Creates an object that handles the actual transmission of Ajax data |
-| [$.get()](https://www.w3schools.com/jquery/ajax_get.asp)     | Loads data from a server using an AJAX HTTP GET request      |
-| [$.getJSON()](https://www.w3schools.com/jquery/ajax_getjson.asp) | Loads JSON-encoded data from a server using a HTTP GET request |
-| $.parseJSON()                                                | Deprecated in version 3.0, use [JSON.parse()](https://www.w3schools.com/js/js_json_parse.asp) instead. Takes a well-formed JSON string and returns the resulting JavaScript value |
-| [$.getScript()](https://www.w3schools.com/jquery/ajax_getscript.asp) | Loads (and executes) a JavaScript from a server using an AJAX HTTP GET request |
-| [$.param()](https://www.w3schools.com/jquery/ajax_param.asp) | Creates a serialized representation of an array or object (can be used as URL query string for AJAX requests) |
-| [$.post()](https://www.w3schools.com/jquery/ajax_post.asp)   | Loads data from a server using an AJAX HTTP POST request     |
-| [ajaxComplete()](https://www.w3schools.com/jquery/ajax_ajaxcomplete.asp) | Specifies a function to run when the AJAX request completes  |
-| [ajaxError()](https://www.w3schools.com/jquery/ajax_ajaxerror.asp) | Specifies a function to run when the AJAX request completes with an error |
-| [ajaxSend()](https://www.w3schools.com/jquery/ajax_ajaxsend.asp) | Specifies a function to run before the AJAX request is sent  |
-| [ajaxStart()](https://www.w3schools.com/jquery/ajax_ajaxstart.asp) | Specifies a function to run when the first AJAX request begins |
-| [ajaxStop()](https://www.w3schools.com/jquery/ajax_ajaxstop.asp) | Specifies a function to run when all AJAX requests have completed |
-| [ajaxSuccess()](https://www.w3schools.com/jquery/ajax_ajaxsuccess.asp) | Specifies a function to run when an AJAX request completes successfully |
-| [load()](https://www.w3schools.com/jquery/ajax_load.asp)     | Loads data from a server and puts the returned data into the selected element |
-| [serialize()](https://www.w3schools.com/jquery/ajax_serialize.asp) | Encodes a set of form elements as a string for submission    |
-| [serializeArray()](https://www.w3schools.com/jquery/ajax_serializearray.asp) | Encodes a set of form elements as an array of names and values |
-|                                                              |                                                              |

@@ -1,6 +1,5 @@
 $(document).ready(function(){
-  $("button").click(function(){
+  $("button").click([1], function(obj){
     $("p").hide();
-    console.log($.fn.jquery);
   });
 });
