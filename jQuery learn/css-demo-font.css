@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+body {
+    font-family: 'Comic Sans MS', cursive;
+}
+th {
+    font-size: 40px;
+    font-style: italic;
+}

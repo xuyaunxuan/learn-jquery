@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>标题测试测试</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./demo.css">
+        <script>
+            function getNextPost()
+            {
+                let head = document.getElementsByClassName('panel-heading')[0].cloneNode(true);
+                let boby = document.getElementsByClassName('panel-body')[0].cloneNode(true);
+                let panel = document.getElementsByClassName('panel-default')[0];
+                panel.appendChild(head);
+                panel.appendChild(boby);
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">關於 Domain-Driven Design 以及他的魅力</h3>
+                </div>
+                <div class="panel-body">
+                    關於 Domain-Driven Design 以及他的魅力 在我剛開始工作時，曾思考這個行業的價值與未來在哪里，直到有天我翻到了一篇文章，裡面有一句話打動了...
+                </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">DDD 學習路徑與資源分享</h3>
+                </div>
+                <div class="panel-body">
+                    DDD 學習路徑與資源分享 經過昨天的傳教文章，今天來為各位簡單介紹 DDD 學習路線以及這系列文章會涵蓋的範圍。 並在文末附上我評估對 DDD 感興趣的朋友...
+                </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">戰略設計：運用 Domain, Subdomain 與 Bounded Context 打造藍圖</h3>
+                </div>
+                <div class="panel-body">
+                    戰略設計：運用 Domain, Subdomain 與 Bounded Context 打造藍圖 我們在第一天有提到什麼是 domain，在 IDDD 中定義...
+                </div>
+            </div>
+            <button type="button" class="btn btn-default btn-lg" style="float:right;" onclick="getNextPost()">下一条</button>
+        </form>
+    </body>
+</html>

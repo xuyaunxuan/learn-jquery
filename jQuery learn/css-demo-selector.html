@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>选择器</title>
+        <style>
+            span {
+                background-color: DodgerBlue;
+                color: #ffffff;
+            }
+            .classy {
+                background-color: grey;
+            }
+            #identified {
+                background-color: rgb(190, 12, 12);
+            }
+            span[proper] {
+                background-color: rgb(61, 7, 211);
+            }
+            div span {
+                background-color: rgb(32, 223, 105);
+            }
+            #div1 > span {
+                background-color: rgb(196, 228, 19);
+            }
+            div ~ span {
+                background-color: rgb(206, 35, 212);
+            }
+            a:hover {
+                color: rgb(206, 35, 212);
+            }
+        </style>
+    </head>
+    <body>
+        <span>元素选择器</span>
+        <span class="classy">类选择器</span>
+        <span id="identified">ID 选择器</span>
+        <span proper>属性选择器</span>
+        <div style="padding-bottom: 20px;"></div>
+        <div>
+            <span>后代组合器</span>
+            <span>后代组合器</span>
+            <span>后代组合器</span>
+        </div>
+        <div style="padding-bottom: 20px;"></div>
+        <div id="div1">
+            <span>
+                <span>非直接子代组合器</span>
+            </span>
+            <span>直接子代组合器</span>
+            <span>直接子代组合器</span>
+        </div>
+        <div style="padding-bottom: 20px;"></div>
+        <div>
+            <div></div>
+            <span>一般兄弟组合器</span>
+            <span>一般兄弟组合器</span>
+        </div>
+        <div style="padding-bottom: 20px;"></div>
+
+        <a>伪类</a>
+    </body>
+</html>
